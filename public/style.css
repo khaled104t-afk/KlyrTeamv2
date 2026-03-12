@@ -1,0 +1,215 @@
+/* Ultra-ugly gothic theme */
+/*
+  Background image should be the attached scream picture saved as:
+  public/images/scream-bg.jpg
+  It will be used as a very faded overlay using the ::before pseudo element.
+
+  Put a transparent ghost sprite at public/images/ghost.png for the JS haunt.
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    /* clear background image, no fade */
+    background: #000 url('/images/scream-bg.jpg') center/cover fixed no-repeat;
+    color: #ccc;
+    font-family: 'Courier New', Courier, monospace;
+    filter: contrast(160%) brightness(50%) saturate(10%) hue-rotate(15deg);
+    animation: colorShift 20s infinite alternate;
+    transform: skew(0deg) scale(1);
+}
+
+/* make the background image very faded */
+body::before {
+    content: '';
+    position: fixed;
+    top:0;left:0;right:0;bottom:0;
+    background: url('/images/scream-bg.jpg') center/cover no-repeat;
+    opacity: 0.12;
+    filter: blur(2px) brightness(0.6);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* dropdown nav styles */
+.sidebar nav ul { list-style:none; padding:0; margin:0; }
+.sidebar nav ul li { position: relative; }
+.sidebar nav ul li a { display: block; padding: 4px 0; }
+.sidebar nav ul .sub { display: none; position: absolute; left: 100%; top: 0; background: rgba(0,0,0,0.25); backdrop-filter: blur(8px); padding: 6px; }
+.sidebar nav ul li:hover > .sub { display: block; }
+.sidebar nav ul .sub li { white-space: nowrap; }
+
+
+/* red flicker animation */
+@keyframes colorShift {
+    0% { filter: contrast(120%) brightness(60%) saturate(5%) hue-rotate(0deg); }
+    50% { filter: contrast(160%) brightness(40%) saturate(0%) hue-rotate(90deg); }
+    100% { filter: contrast(140%) brightness(70%) saturate(10%) hue-rotate(180deg); }
+}
+
+/* shake removed per request */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    padding: 24px 18px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    transform: none;
+}
+
+.sidebar h1 {
+    font-size: 0.75rem; /* even smaller */
+    color: #555;
+    margin-bottom: 12px;
+    text-align: center;
+    font-family: 'Old English Text MT', serif;
+    text-shadow: 2px 2px 3px #000;
+    letter-spacing: 0.05em;
+}
+
+/* reduce other page H1 slightly */
+h1 {
+    font-size: 2.2rem;
+}
+.sidebar nav a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin: 6px 0;
+    font-size: 0.85rem;
+    padding-left: 15px;
+    position: relative;
+    transition: color 0.2s;
+}
+.sidebar nav a::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #333;
+}
+.sidebar nav a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    background: red;
+    border-radius: 50%;
+    animation: drip 2s infinite;
+}
+@keyframes drip {
+    0% { opacity:1; transform: translateY(0); }
+    80% { opacity:1; transform: translateY(8px); }
+    100% { opacity:0; transform: translateY(12px); }
+}
+.sidebar nav a:hover {
+    color: #bbb;
+    transform: translateX(3px) rotate(-1deg);
+}
+.sidebar nav a:hover::before {
+    color: #fff;
+    left: -2px;
+    content: "»";
+}
+
+.main {
+    margin-left: 240px;
+    padding: 30px;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 240px;
+    right: 0;
+    background: rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    color: #555;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 240px;
+    right: 0;
+    background: #111;
+    color: #555;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 8px 0;
+    border-top: 2px solid #444;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.image-grid img,
+.placeholder-img {
+    width: 120px;
+    height: 90px;
+    background: #222;
+    opacity: 0.25;
+    border: 2px solid #444;
+    filter: grayscale(100%) contrast(150%) blur(1px);
+    animation: jitter 10s infinite; /* slow jitter */
+}
+@keyframes jitter {
+    0%,100% { transform: rotate(-2deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+}
+
+.placeholder-img::after {
+    content: "IMAGE";
+    color: #555;
+    font-size: 0.6rem;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+h1,h2,h3,h4 {
+    color: #ccc;
+    text-shadow: 2px 2px 2px #000;
+    font-family: 'Impact', 'Segoe UI Black', sans-serif;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+audio {
+    width: 100%;
+    margin: 10px 0;
+    filter: invert(100%);
+}
+
+/* glitch effect on some texts */
+.glitch {
+    animation: glitchAnim 2s infinite;
+}
+@keyframes glitchAnim {
+    0% { text-shadow: 2px 0 red; }
+    20% { text-shadow: -2px 0 blue; }
+    40% { text-shadow: 2px 0 magenta; }
+    60% { text-shadow: -2px 0 cyan; }
+    80% { text-shadow: 2px 0 yellow; }
+    100% { text-shadow: none; }
+}

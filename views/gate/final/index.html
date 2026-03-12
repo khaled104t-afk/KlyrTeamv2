@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>// FINAL //</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>0x4B6C7972::0xDEAD:#0x11E79</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/corridor">Corridor</a>
+            <a href="/mirror">Mirror</a>
+            <a href="/static">Static</a>
+            <a href="/void">Void</a>
+            <a href="/logs">Logs</a>
+            <a href="/admin">Admin</a>
+        </nav>
+    </div>
+    <div class="main">
+        <h2>// FINAL //</h2>
+        <p>The air thickens. A faint melody plays from nowhere. The walls pulse with a slow heartbeat. Beyond is... whatever comes next.</p>
+        <div class="image-container glitch"></div>
+        <div class="overlay-text">
+            <p>They've been waiting for you.</p>
+            <p>You've been here before, haven't you? In dreams. In nightmares.</p>
+            <p>The figures in the painting... they're closer now.</p>
+            <p id="personalMessage"></p>
+        </div>
+        <div class="placeholder-img"></div>
+        <audio controls><source src="" type="audio/mpeg"></audio>
+        <script>
+            const name = localStorage.getItem('userName') || 'visitor';
+            document.getElementById('personalMessage').textContent = `They know your name, ${name}.`;
+        </script>
+    </div>
+    <footer>All Rights Reserved © 2026 Your Name Here. Design: ModBlackmoon</footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>// ADMIN //</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>0x4B6C7972::0xDEAD:#0x11E79</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/information">Information</a>
+            <a href="/articles">Articles</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/media">Media</a>
+            <a href="/extras">Extras</a>
+            <a href="/forum">Forum</a>
+            <a href="/about">About Us</a>
+        </nav>
+    </div>
+    <div class="main">
+        <h2>// ADMIN PANEL //</h2>
+        <p>Enter credentials. (This panel is a decoy; attempts are logged.)</p>
+        <form id="adminForm">
+            <input type="text" name="username" placeholder="username"><br>
+            <input type="password" name="password" placeholder="password"><br>
+            <input type="submit" value="login">
+        </form>
+        <p id="message"></p>
+        <div class="placeholder-img"></div>
+        <script>
+            document.getElementById('adminForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                document.getElementById('message').textContent = 'Access denied. Attempt logged.';
+            });
+        </script>
+    </div>
+    <footer>All Rights Reserved © 2026 Your Name Here. Design: ModBlackmoon</footer>
+</body>
+</html>

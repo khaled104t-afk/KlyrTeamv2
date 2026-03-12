@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>// SYSTEM LOGS //</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>0x4B6C7972::0xDEAD:#0x11E79</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/information">Information</a>
+            <a href="/articles">Articles</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/media">Media</a>
+            <a href="/extras">Extras</a>
+            <a href="/forum">Forum</a>
+            <a href="/about">About Us</a>
+        </nav>
+    </div>
+    <div class="main">
+        <h2>// SYSTEM LOGS //</h2>
+        <div id="logEntries"></div>
+        <p><a href="/">Back</a></p>
+        <div class="placeholder-img"></div>
+        <audio controls><source src="" type="audio/mpeg"></audio>
+        <script>
+            async function fetchLogs() {
+                const res = await fetch('/logs', { headers: { 'Accept': 'application/json' } });
+                const logs = await res.json();
+                document.getElementById('logEntries').innerHTML = logs.map(log =>
+                    `<div class="log">[${log.timestamp}] ${log.content}</div>`
+                ).join('');
+            }
+            fetchLogs();
+            setInterval(fetchLogs, 10000);
+        </script>
+    </div>
+    <footer>All Rights Reserved © 2026 Your Name Here. Design: ModBlackmoon</footer>
+</body>
+</html>
